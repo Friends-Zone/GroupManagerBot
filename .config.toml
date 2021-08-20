@@ -1,8 +1,8 @@
 [pyrogram]
     session_name = "GroupManagerBot"
-    api_id=
-    api_hash=
-    bot_token=
+    api_id=2982886
+    api_hash="f498d1b341d249b58429bb53629faab4"
+    bot_token="1957636987:AAGf5H1dak2d7fgV6T90DaY5wYaeCYOEk7c"
     [pyrogram.plugins]
         root = "bot/handlers"
 
@@ -12,3 +12,4 @@
     [bot.database]
         provider = "sqlite"
         filename = "bot.sqlite"
+        create_db = true
