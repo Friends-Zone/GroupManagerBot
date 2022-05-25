@@ -5,8 +5,9 @@ from .. import futures, strings
 
 @Client.on_callback_query(human)
 async def i_am_a_human(client: Client, callback: types.CallbackQuery):
-    future = futures.get((callback.message.chat.id, callback.from_user.id))
-    if future:
+    if future := futures.get(
+        (callback.message.chat.id, callback.from_user.id)
+    ):
         future.set_result(True)
         await callback.message.edit_text(strings.hebrew.welcome)
         client.loop.call_later(3, lambda: client.loop.create_task(callback.message.delete()))
@@ -16,8 +17,9 @@ async def i_am_a_human(client: Client, callback: types.CallbackQuery):
 
 @Client.on_callback_query(bot)
 async def i_am_a_bot(client: Client, callback: types.CallbackQuery):
-    future = futures.get((callback.message.chat.id, callback.from_user.id))
-    if future:
+    if future := futures.get(
+        (callback.message.chat.id, callback.from_user.id)
+    ):
         future.set_result(False)
         await callback.message.edit_text(strings.hebrew.bye)
         await callback.message.chat.kick_member(callback.from_user.id, 3000)
